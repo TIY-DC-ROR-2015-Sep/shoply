@@ -1,9 +1,14 @@
-- @categories.each do |cat|
-  = link_to cat.name, category_products_path(cat)
+.row
+  .col-md-3
+    .well.sidebar-nav
+      h3 Categories
+      - @categories.each do |cat|
+        = link_to cat.name, category_products_path(cat)
 
-h1 This is the product main page
+  .col-md-9
+    h1 This is the product main page
 
-p There should be a grid of products here at some point.
-p Maybe it has the newest items in it?
-p Maybe the best sellers?
-p I don't know.
+    p There should be a grid of products here at some point.
+    p Maybe it has the newest items in it?
+    p Maybe the best sellers?
+    p I don't know.
