@@ -16,7 +16,12 @@ class PurchaseItemsTest < ActionDispatch::IntegrationTest
     # Click on a category
     click_on "Floppy Disks"
 
+    # within "#main" do
+    #   css("img").count # ...
+    # end
+
     # Click "buy" on first two results
+
     # See two items in cart
     # Click on cart
     # See checkout page
