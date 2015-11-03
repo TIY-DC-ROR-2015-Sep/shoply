@@ -7,4 +7,6 @@ class Product < ActiveRecord::Base
 
   has_many :product_purchases
   has_many :purchases, through: :product_purchases
+
+  paginates_per 3
 end

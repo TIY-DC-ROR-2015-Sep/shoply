@@ -1,5 +1,7 @@
 h2= @category.name
 
+= paginate @products, theme: 'twitter-bootstrap-3'
+
 - @products.each do |prod|
   .item
     h3= prod.name
