@@ -3,7 +3,7 @@ h2= @category.name
 - @products.each do |prod|
   .item
     h3= prod.name
-    h4= prod.price_in_cents
+    h4= display_price prod
 
     = form_tag category_product_add_to_cart_path(@category, prod) do
       button.btn.btn-default Buy
