@@ -1,3 +1,6 @@
+- @categories.each do |cat|
+  = link_to cat.name, category_products_path(cat)
+
 h1 This is the product main page
 
 p There should be a grid of products here at some point.

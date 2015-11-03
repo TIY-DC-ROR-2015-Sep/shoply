@@ -4,6 +4,7 @@ require 'rails/test_help'
 
 require 'capybara/rails'
 require 'pry'
+require 'faker'
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
@@ -21,5 +22,12 @@ class ActionDispatch::IntegrationTest
     fill_in "Email", with: user.email
     fill_in "Password", with: "password"
     click_on "Log in"
+  end
+
+  def make_product
+    Product.create!(
+      name: Faker::Commerce.product_name,
+      price_in_cents: rand(1 .. 1000)
+    )
   end
 end
