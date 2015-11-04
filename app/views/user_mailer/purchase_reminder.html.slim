@@ -1,0 +1,9 @@
+h2 Purchase Reminder
+
+p About your purchase made on #{@purchase.created_at} ...
+
+ul
+  - @purchase.products.each do |i|
+   li= i.name
+
+p You owe #{@purchase.total_cost_in_cents} cents on this order.

@@ -1,0 +1,10 @@
+Purchase Reminder
+=================
+
+About your purchase made on <%= @purchase.created_at %> ...
+
+<% @purchase.products.each do |i| %>
+* <%= i.name %>
+<% end %>
+
+You owe <%= @purchase.total_cost_in_cents %> on this order.

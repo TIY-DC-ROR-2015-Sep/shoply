@@ -26,6 +26,7 @@ group :development do
   gem 'faker'
   gem 'pry-rails'
   gem 'quiet_assets'
+  gem 'letter_opener'
 end
 
 group :development, :test do
