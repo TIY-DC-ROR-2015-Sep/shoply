@@ -23,11 +23,15 @@ class PurchaseItemsTest < ActionDispatch::IntegrationTest
 
     # Click "buy" on first two results
     first(:button, "Buy").click
-    save_and_open_page
-    binding.pry
+    find_all(:button, "Buy")[1].click
 
     # See two items in cart
+    # left_nav = find(".navbar-nav.pull-right")
+    # assert left_nav.has_content?("2 items in cart")
+
     # Click on cart
+    click_link "2 items in cart"
+
     # See checkout page
     skip
   end

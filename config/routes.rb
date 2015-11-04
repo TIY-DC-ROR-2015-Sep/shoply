@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :purchases, except: [:delete]
+
   root to: "products#main"
 end

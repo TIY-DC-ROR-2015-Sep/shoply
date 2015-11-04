@@ -34,7 +34,7 @@ html lang="en"
               li= link_to "Link 2", "/path2"
               li= link_to "Link 3", "/path3"
             ul.nav.navbar-nav.pull-right
-              li #{cart.items.count} items in cart
+              li= link_to "#{cart.items.count} items in cart", new_purchase_path
 
     .container
       = bootstrap_flash
