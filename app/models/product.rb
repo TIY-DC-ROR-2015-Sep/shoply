@@ -9,4 +9,8 @@ class Product < ActiveRecord::Base
   has_many :purchases, through: :product_purchases
 
   paginates_per 3
+
+  def self.search term
+    self.where("description LIKE ?", "%#{term}%")
+  end
 end

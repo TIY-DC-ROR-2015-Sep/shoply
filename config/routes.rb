@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   # get "/api/categories" => "api/category#show"
   namespace :api do
     resources :categories, only: [:index, :show]
+
+    get :search, controller: "products", action: "search"
   end
 
   root to: "products#main"
