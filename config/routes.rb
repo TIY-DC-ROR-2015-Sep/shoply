@@ -9,5 +9,10 @@ Rails.application.routes.draw do
 
   resources :purchases, except: [:delete]
 
+  # get "/api/categories" => "categories#index"
+  namespace :api do
+    resources :categories, only: [:index]
+  end
+
   root to: "products#main"
 end
