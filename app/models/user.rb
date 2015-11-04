@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :purchases
+
+  def self.find_for_api_token token
+    User.all.to_a[token.to_i]
+  end
 end
