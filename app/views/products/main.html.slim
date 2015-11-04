@@ -12,3 +12,13 @@
     p Maybe it has the newest items in it?
     p Maybe the best sellers?
     p I don't know.
+
+- p = Purchase.first
+= form_for p, method: :post, url: "/" do |f|
+  = f.text_field :created_at
+
+  - p.product_purchases.each do |pp|
+    = f.fields_for :product_purchases, pp do |ppf|
+        = ppf.number_field :quantity
+
+  button.btn.btn-success Go

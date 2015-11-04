@@ -3,6 +3,10 @@ class ProductsController < ApplicationController
     @categories = Category.all
   end
 
+  def pry
+    binding.pry
+  end
+
   def index
     @category = Category.find params[:category_id]
     @products = @category.products.page(params[:page])

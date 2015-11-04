@@ -18,5 +18,6 @@ Rails.application.routes.draw do
     get :search, controller: "products", action: "search"
   end
 
+  post "/" => "products#pry"
   root to: "products#main"
 end
