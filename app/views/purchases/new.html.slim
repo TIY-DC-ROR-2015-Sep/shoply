@@ -1,0 +1,12 @@
+table.table.table-striped.table-hover
+  thead
+    tr
+      th Product
+      th Price
+      th Quantity
+  tbody
+    - @items.each do |item|
+      tr
+        td= item.name
+        td= display_price item
+        td

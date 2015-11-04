@@ -5,10 +5,14 @@ class SessionCart
   end
 
   def items
-    @store[:items]
+    Product.find @store[:items]
   end
 
   def add product
-    items.push product
+    @store[:items].push product.id
+  end
+
+  def item_count
+    @store[:items].count
   end
 end
