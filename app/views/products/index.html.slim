@@ -7,5 +7,6 @@ h2= @category.name
     h3= prod.name
     h4= display_price prod
 
-    = form_tag category_product_add_to_cart_path(@category, prod) do
-      button.btn.btn-default Buy
+    /= form_tag category_product_add_to_cart_path(@category, prod), method: :put do
+    /  button.btn.btn-default Buy
+    = button_to "Buy", category_product_add_to_cart_path(@category, prod), method: :put, class: "btn btn-default"

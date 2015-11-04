@@ -19,11 +19,16 @@ class PurchaseItemsTest < ActionDispatch::IntegrationTest
     # within "#main" do
     #   css("img").count # ...
     # end
+    assert_equal 3, find_all(".container .item").count
 
     # Click "buy" on first two results
+    first(:button, "Buy").click
+    save_and_open_page
+    binding.pry
 
     # See two items in cart
     # Click on cart
     # See checkout page
+    skip
   end
 end
