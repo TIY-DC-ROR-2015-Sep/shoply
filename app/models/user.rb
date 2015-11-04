@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :purchases
 
+  validates_uniqueness_of :api_key, if: 'api_key.present?'
+
   def self.find_for_api_token token
-    User.all.to_a[token.to_i]
+    User.find_by(api_key: token)
   end
 end
