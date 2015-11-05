@@ -31,6 +31,7 @@ class PurchasesController < ApplicationController
       description: "Charge for Shoply purchase ##{purchase.id}"
     )
     flash[:success] = "Payment received"
+    Rails.logger.info "Got payment #{c.id}"
     purchase.update! paid_at: Time.now, payment_id: c.id
     redirect_to purchase
   rescue Stripe::CardError => e
