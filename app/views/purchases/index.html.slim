@@ -1,0 +1,3 @@
+ul
+  - @purchases.each do |purchase|
+    li= link_to time_ago_in_words(purchase.created_at), purchase

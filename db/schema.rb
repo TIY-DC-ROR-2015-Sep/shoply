@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104162923) do
+ActiveRecord::Schema.define(version: 20151105154001) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -26,8 +29,8 @@ ActiveRecord::Schema.define(version: 20151104162923) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "product_categories", ["category_id"], name: "index_product_categories_on_category_id"
-  add_index "product_categories", ["product_id"], name: "index_product_categories_on_product_id"
+  add_index "product_categories", ["category_id"], name: "index_product_categories_on_category_id", using: :btree
+  add_index "product_categories", ["product_id"], name: "index_product_categories_on_product_id", using: :btree
 
   create_table "product_purchases", force: :cascade do |t|
     t.integer  "product_id"
@@ -37,8 +40,8 @@ ActiveRecord::Schema.define(version: 20151104162923) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "product_purchases", ["product_id"], name: "index_product_purchases_on_product_id"
-  add_index "product_purchases", ["purchase_id"], name: "index_product_purchases_on_purchase_id"
+  add_index "product_purchases", ["product_id"], name: "index_product_purchases_on_product_id", using: :btree
+  add_index "product_purchases", ["purchase_id"], name: "index_product_purchases_on_purchase_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -52,9 +55,11 @@ ActiveRecord::Schema.define(version: 20151104162923) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "payment_id"
+    t.datetime "paid_at"
   end
 
-  add_index "purchases", ["user_id"], name: "index_purchases_on_user_id"
+  add_index "purchases", ["user_id"], name: "index_purchases_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -72,7 +77,7 @@ ActiveRecord::Schema.define(version: 20151104162923) do
     t.string   "api_key"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

@@ -1,0 +1,9 @@
+h1 Purchase Invoice
+h3 For purchase made #{time_ago_in_words @purchase.created_at} ago
+
+p For #{@purchase.total_cost_in_cents} cents
+
+- if @purchase.paid?
+  p Paid!
+- else
+  = render partial: "stripe_payment_form", locals: { purchase: @purchase }

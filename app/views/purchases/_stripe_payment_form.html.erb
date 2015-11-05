@@ -1,0 +1,10 @@
+<%= form_tag "" do %>
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Figaro.env.stripe_publishable_key! %>"
+    data-amount="<%= purchase.total_cost_in_cents %>"
+    data-name="Shoply"
+    data-description="<%= purchase.description %>"
+    data-locale="auto">
+  </script>
+<% end %>

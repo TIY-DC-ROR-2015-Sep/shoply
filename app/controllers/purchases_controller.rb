@@ -13,4 +13,16 @@ class PurchasesController < ApplicationController
     cart.clear
     redirect_to purchase, notice: "Invoice created. Pay when ready."
   end
+
+  def index
+    @purchases = current_user.purchases
+  end
+
+  def show
+    @purchase = current_user.purchases.find params[:id]
+  end
+
+  def pay
+    raise
+  end
 end
