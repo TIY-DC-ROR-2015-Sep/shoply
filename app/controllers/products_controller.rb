@@ -13,4 +13,8 @@ class ProductsController < ApplicationController
     cart.add product
     redirect_to :back
   end
+
+  def search
+    @results = Product.search_all(params[:q]).page params[:page]
+  end
 end

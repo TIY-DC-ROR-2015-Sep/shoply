@@ -10,6 +10,10 @@ class Product < ActiveRecord::Base
 
   paginates_per 3
 
+  include PgSearch
+  pg_search_scope :search_by_description, against: :description
+  pg_search_scope :search_all, against: [:name, :description]
+
   def self.search term
     self.where("description LIKE ?", "%#{term}%")
   end

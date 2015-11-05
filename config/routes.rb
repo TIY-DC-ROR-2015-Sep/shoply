@@ -18,5 +18,7 @@ Rails.application.routes.draw do
     get :search, controller: "products", action: "search"
   end
 
+  get :search, controller: "products", action: "search"
+
   root to: "products#main"
 end

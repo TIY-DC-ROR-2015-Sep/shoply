@@ -1,0 +1,15 @@
+= form_tag search_path, method: :get do
+  = text_field_tag :q, params[:q]
+  button.btn.btn-default Search
+
+- if @results.any?
+  h3 Found #{@results.total_count} results
+
+  = paginate @results, theme: "twitter-bootstrap-3"
+
+  ul
+    - @results.each do |r|
+      li= link_to r.name, "#"
+
+- else
+  h3 No results found

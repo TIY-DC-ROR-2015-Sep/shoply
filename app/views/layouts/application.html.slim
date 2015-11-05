@@ -30,9 +30,9 @@ html lang="en"
           a.navbar-brand href="#"Shoply
           .navbar-collapse.collapse.navbar-responsive-collapse
             ul.nav.navbar-nav
-              li= link_to "Link 1", "/path1"
-              li= link_to "Link 2", "/path2"
-              li= link_to "Link 3", "/path3"
+              = form_tag search_path, method: :get do
+                = text_field_tag :q
+                button.btn.btn-default Search
             ul.nav.navbar-nav.pull-right
               li= link_to "#{cart.item_count} items in cart", new_purchase_path
 

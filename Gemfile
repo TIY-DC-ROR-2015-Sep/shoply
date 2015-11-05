@@ -21,6 +21,7 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
 gem 'rollbar'
+gem 'pg_search'
 
 group :development do
   gem 'better_errors'
