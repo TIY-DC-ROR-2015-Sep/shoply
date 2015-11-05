@@ -23,6 +23,7 @@ gem 'bootstrap-kaminari-views'
 gem 'rollbar'
 gem 'pg_search'
 gem 'figaro'
+gem 'stripe'
 
 group :development do
   gem 'better_errors'

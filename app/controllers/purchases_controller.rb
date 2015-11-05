@@ -23,6 +23,18 @@ class PurchasesController < ApplicationController
   end
 
   def pay
-    raise
+    purchase = Purchase.find params[:id]
+    c = Stripe::Charge.create(
+      amount: purchase.total_cost_in_cents,
+      currency: "usd",
+      source: params[:stripeToken],
+      description: "Charge for Shoply purchase ##{purchase.id}"
+    )
+    flash[:success] = "Payment received"
+    purchase.update! paid_at: Time.now, payment_id: c.id
+    redirect_to purchase
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to :back
   end
 end
