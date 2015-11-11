@@ -34,7 +34,7 @@ html lang="en"
                 = text_field_tag :q
                 button.btn.btn-default Search
             ul.nav.navbar-nav.pull-right
-              li= link_to "#{cart.item_count} items in cart", new_purchase_path
+              li= link_to "#{cart.item_count} items in cart", new_purchase_path, class: "cart-link"
 
     .container
       = bootstrap_flash

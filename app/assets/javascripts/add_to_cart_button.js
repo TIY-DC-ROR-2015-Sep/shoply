@@ -11,6 +11,12 @@ window.onload = function() {
   }
 }
 
+function updateCartCount() {
+  var cartDisplay = document.querySelector(".cart-link");
+  console.log(cartDisplay.innerHTML);
+  var currentCount = parseInt(cartDisplay.innerText.split(" ")[0]);
+  cartDisplay.innerText = (currentCount + 1) + " items in cart";
+}
 
 function addProductToCart(product_id, button) {
   var cat = button.getAttribute("data-category-id");
@@ -18,6 +24,7 @@ function addProductToCart(product_id, button) {
     method: "PUT",
     success: function() {
       button.innerText = "Added";
+      updateCartCount();
     },
     error: function() {
       alert("Something went wrong. Please try again");
