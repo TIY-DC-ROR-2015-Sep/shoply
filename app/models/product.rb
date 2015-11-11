@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
   has_many :product_purchases
   has_many :purchases, through: :product_purchases
 
-  paginates_per 3
+  paginates_per 25
 
   include PgSearch
   pg_search_scope :search_by_description, against: :description

@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
   def add_to_cart
     product = Product.find params[:product_id]
     cart.add product
-    redirect_to :back
+    render json: { status: "added" }
   end
 
   def search
