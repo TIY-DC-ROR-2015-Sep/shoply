@@ -10,14 +10,16 @@ window.onload = function() {
   }
 }
 
+function panic() {
+  alert("Something went wrong");
+}
+
 function addProductToCart(product_id) {
   $.ajax("/categories/_/products/" + product_id + "/add_to_cart", {
     method: "PUT",
     success: function() {
       alert("It was successful");
     },
-    error: function() {
-      alert("Something went wrong");
-    }
+    error: panic
   })
 }
