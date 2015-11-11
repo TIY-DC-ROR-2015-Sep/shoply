@@ -9,7 +9,8 @@ class ProductsController < ApplicationController
   end
 
   def add_to_cart
-    product = Product.find params[:product_id]
+    category = Category.find params[:category_id]
+    product  = category.products.find params[:product_id]
     cart.add product
     render json: { status: "added" }
   end

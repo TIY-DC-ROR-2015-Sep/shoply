@@ -9,6 +9,6 @@ h2= @category.name
 
     /= form_tag category_product_add_to_cart_path(@category, prod), method: :put do
     /  button.btn.btn-default Buy
-    = button_to "Buy", category_product_add_to_cart_path(@category, prod), method: :put, class: "btn btn-default"
-    a.add-to-cart href="#" data-product-id=prod.id
+    /= button_to "Buy", category_product_add_to_cart_path(@category, prod), method: :put, class: "btn btn-default no-js"
+    a.btn.btn-default.add-to-cart href="#" data-product-id=prod.id data-category-id=prod.categories.first.try(:id)
       | Buy

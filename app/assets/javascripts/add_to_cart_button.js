@@ -4,22 +4,24 @@ window.onload = function() {
     var b = buttons[i];
     b.addEventListener("click", function(e){
       e.preventDefault();
+      this.setAttribute("disabled", "disabled");
       var product_id = this.getAttribute("data-product-id");
-      addProductToCart(product_id);
+      addProductToCart(product_id, this);
     })
   }
 }
 
-function panic() {
-  alert("Something went wrong");
-}
 
-function addProductToCart(product_id) {
-  $.ajax("/categories/_/products/" + product_id + "/add_to_cart", {
+function addProductToCart(product_id, button) {
+  var cat = button.getAttribute("data-category-id");
+  $.ajax("/categories/" + cat + "/products/" + product_id + "/add_to_cart", {
     method: "PUT",
     success: function() {
-      alert("It was successful");
+      button.innerText = "Added";
     },
-    error: panic
+    error: function() {
+      alert("Something went wrong. Please try again");
+      button.removeAttribute("disabled");
+    }
   })
 }
