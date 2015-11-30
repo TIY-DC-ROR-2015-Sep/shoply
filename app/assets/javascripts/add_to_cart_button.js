@@ -11,20 +11,18 @@ window.onload = function() {
   }
 }
 
-function updateCartCount() {
+function updateCartCount(newCount) {
   var cartDisplay = document.querySelector(".cart-link");
-  console.log(cartDisplay.innerHTML);
-  var currentCount = parseInt(cartDisplay.innerText.split(" ")[0]);
-  cartDisplay.innerText = (currentCount + 1) + " items in cart";
+  cartDisplay.innerText = newCount + " items in cart";
 }
 
 function addProductToCart(product_id, button) {
   var cat = button.getAttribute("data-category-id");
   $.ajax("/categories/" + cat + "/products/" + product_id + "/add_to_cart", {
     method: "PUT",
-    success: function() {
+    success: function(data) {
       button.innerText = "Added";
-      updateCartCount();
+      updateCartCount(data.items_in_cart);
     },
     error: function() {
       alert("Something went wrong. Please try again");

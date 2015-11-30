@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :purchases, only: [:index, :send_reminder]
 
     get :search, controller: "products", action: "search"
+
+    root "base#who_am_i"
   end
 
   get :search, controller: "products", action: "search"

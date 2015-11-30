@@ -5,7 +5,7 @@ class TokenAuthStrategy < Devise::Strategies::Base
 
   def authenticate!
     token = request.headers["Authorization"]
-    user  = User.find_for_api_token token
+    user  = User.find_by_email token
     if user
       success! user
     else

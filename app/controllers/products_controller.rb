@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
     category = Category.find params[:category_id]
     product  = category.products.find params[:product_id]
     cart.add product
-    render json: { status: "added" }
+    render json: { user: current_user.email, product: product, items_in_cart: cart.item_count }
   end
 
   def search
